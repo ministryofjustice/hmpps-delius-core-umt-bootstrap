@@ -1,0 +1,18 @@
+spring.profiles.include=default
+
+jwt.secret={{ jwt_secret | default(lookup('password', '/dev/null chars=ascii_letters,digits length=32')) }}
+delius.secret={{ delius_secret | default(lookup('password', '/dev/null chars=ascii_letters,digits length=32')) }}
+
+spring.datasource.url={{ database_url }}
+spring.datasource.username={{ database_username }}
+spring.datasource.password={{ database_password }}
+spring.datasource.type=oracle.jdbc.pool.OracleDataSource
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
+spring.jpa.hibernate.ddl-auto=none
+
+oid.urls={{ ldap_url }}
+oid.base={{ ldap_user_base }}
+oid.username={{ ldap_bind_username }}
+oid.password={{ ldap_bind_password }}
+
+logging.level.uk.co.bconline.ndelius={{ ndelius_log_level | default('INFO') }}

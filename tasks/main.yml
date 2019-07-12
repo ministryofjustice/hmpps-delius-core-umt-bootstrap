@@ -1,0 +1,13 @@
+---
+# tasks file for hmpps-delius-core-umt-bootstrap
+- name: Setup config directory
+  file:
+    path: '{{ config_location }}'
+    state: directory
+    owner: 0
+
+- name: Generate the config file
+  template:
+    src: application.properties.j2
+    dest: '{{ config_location }}/application.properties'
+    owner: 0
